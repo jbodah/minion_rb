@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "minion_rb/version"
+require "minion/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "minion_rb"
-  spec.version       = MinionRb::VERSION
+  spec.version       = Minion::VERSION
   spec.authors       = ["Josh Bodah"]
   spec.email         = ["joshuabodah@gmail.com"]
 
