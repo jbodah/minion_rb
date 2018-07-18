@@ -44,7 +44,7 @@ module Minion
           define_singleton_method "do_#{method.upcase}" do |req, res|
             match = cases.find { |(expr, _)| req.path =~ expr }
             if match.nil?
-              super
+              super req, res
             else
               _, handler = match
               handler.call(req, res)
