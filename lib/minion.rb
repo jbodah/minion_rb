@@ -17,7 +17,7 @@ module Minion
     end
 
     def start
-      mitm_pattern = /^(#{@hosts.keys.map { |hostname| Regexp.escape(hostname) }.join('|')})$/
+      mitm_pattern = /(#{@hosts.keys.map { |hostname| Regexp.escape(hostname) }.join('|')})/
       proxy = EvilProxy::MITMProxyServer.new Port: 8080, MITMPattern: mitm_pattern
       # todo - unsuckify
       @hosts.each do |hostname, minion_host|
