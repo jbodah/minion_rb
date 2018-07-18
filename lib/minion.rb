@@ -41,13 +41,13 @@ module Minion
     def apply(mitm_server)
       @handlers.each do |method, cases|
         mitm_server.instance_eval do
-          define_singleton_method "do_#{method.upcase}" do |req|
+          define_singleton_method "do_#{method.upcase}" do |req, res|
             match = cases.find { |(expr, _)| req.path =~ expr }
             if match.nil?
               super
             else
               _, handler = match
-              handler.call(req)
+              handler.call(req, res)
             end
           end
         end
